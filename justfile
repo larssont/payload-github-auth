@@ -93,12 +93,12 @@ ci: check test-coverage test-integration package
 [group("Release")]
 publish: release-check check test test-integration package
     pnpm publish --access public
-    @version=$$(node -p "require('./package.json').version"); \
-      git tag -a "v$$version" -m "v$$version"; \
-      git push origin "v$$version"
+    @version=$(node -p "require('./package.json').version"); \
+      git tag -a "v$version" -m "v$version"; \
+      git push origin "v$version"
 
 [private]
 release-check:
-    @if [ -n "$$(git status --porcelain)" ]; then echo "Working tree is dirty; commit before publishing."; exit 1; fi
-    @version=$$(node -p "require('./package.json').version"); \
-      if git rev-parse "v$$version" >/dev/null 2>&1; then echo "Tag v$$version already exists."; exit 1; fi
+    @if [ -n "$(git status --porcelain)" ]; then echo "Working tree is dirty; commit before publishing."; exit 1; fi
+    @version=$(node -p "require('./package.json').version"); \
+      if git rev-parse "v$version" >/dev/null 2>&1; then echo "Tag v$version already exists."; exit 1; fi
