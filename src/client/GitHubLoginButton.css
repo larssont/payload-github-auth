@@ -1,0 +1,61 @@
+.payload-github-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border: 1px solid #24292f;
+  border-radius: 6px;
+  background: #24292f;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease;
+}
+
+.payload-github-login-button:hover {
+  background: #32383f;
+  border-color: #32383f;
+}
+
+.payload-github-login-button:active {
+  background: #1b1f23;
+  border-color: #1b1f23;
+}
+
+.payload-github-login-button:focus-visible {
+  outline: 2px solid #2f81f7;
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .payload-github-login-button {
+  background: #f0f6fc;
+  border-color: #f0f6fc;
+  color: #24292f;
+}
+
+[data-theme="dark"] .payload-github-login-button:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+[data-theme="dark"] .payload-github-login-button:active {
+  background: #d0d7de;
+  border-color: #d0d7de;
+}
+
+.payload-github-login-button__icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: currentColor;
+}

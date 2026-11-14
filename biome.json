@@ -1,0 +1,124 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.6.7/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "includes": [
+      "**",
+      "!coverage",
+      "!dist",
+      "!.attw",
+      "!node_modules",
+      "!pnpm-lock.yaml",
+      "!dev/src/payload-types.ts",
+      "!dev/src/routeTree.gen.ts",
+      "!dev/src/app/_payload/importMap.js"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 120,
+    "useEditorconfig": true
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "jsxQuoteStyle": "double",
+      "semicolons": "asNeeded",
+      "trailingCommas": "all",
+      "arrowParentheses": "always",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "quoteProperties": "asNeeded",
+      "attributePosition": "auto"
+    }
+  },
+  "json": {
+    "formatter": {
+      "trailingCommas": "none"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "correctness": {
+        "noUnusedVariables": "error",
+        "noUnusedImports": "error",
+        "useExhaustiveDependencies": "warn",
+        "useHookAtTopLevel": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "error",
+        "noUnusedExpressions": "error",
+        "noConsole": {
+          "level": "error",
+          "options": {
+            "allow": ["warn", "error"]
+          }
+        },
+        "noDoubleEquals": "error",
+        "noVar": "error"
+      },
+      "style": {
+        "useConst": "error",
+        "noNonNullAssertion": "off"
+      },
+      "nursery": {
+        "noFloatingPromises": "error",
+        "noMisusedPromises": "error",
+        "noUselessTypeAssertion": "error"
+      }
+    },
+    "domains": {
+      "types": "recommended",
+      "test": "recommended"
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["dev/**"],
+      "linter": {
+        "domains": {
+          "types": "none"
+        },
+        "rules": {
+          "nursery": {
+            "noFloatingPromises": "off",
+            "noMisusedPromises": "off",
+            "noUselessTypeAssertion": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/__tests__/**"],
+      "linter": {
+        "domains": {
+          "types": "none"
+        },
+        "rules": {
+          "nursery": {
+            "noFloatingPromises": "off",
+            "noMisusedPromises": "off",
+            "noUselessTypeAssertion": "off"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+.attw
+*.tsbuildinfo
+.env
+dev/.env
+dev/*.db
+dev/src/app/_payload/*
+!dev/src/app/_payload/custom.css

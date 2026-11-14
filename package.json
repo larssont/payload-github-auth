@@ -1,0 +1,131 @@
+{
+  "name": "@larssont/payload-github-auth",
+  "version": "0.1.0",
+  "description": "GitHub App login for the Payload CMS admin",
+  "license": "MIT",
+  "author": "Tommy Larsson",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larssont/payload-github-auth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/larssont/payload-github-auth/issues"
+  },
+  "homepage": "https://github.com/larssont/payload-github-auth#readme",
+  "keywords": [
+    "payload",
+    "payload-plugin",
+    "github",
+    "oauth",
+    "auth"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./src/exports/client.ts",
+      "import": "./src/exports/client.ts",
+      "default": "./src/exports/client.ts"
+    },
+    "./client.css": {
+      "import": "./src/client/GitHubLoginButton.css",
+      "default": "./src/client/GitHubLoginButton.css"
+    }
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm clean && pnpm build:types && pnpm build:swc && pnpm build:css",
+    "build:css": "node ./scripts/copy-css.mjs",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths --ignore \"**/*.d.ts\" --ignore \"**/__tests__/**\"",
+    "build:types": "tsc -p tsconfig.build.json --outDir dist --rootDir ./src && node ./scripts/clean-dts.mjs",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "clean": "rimraf dist",
+    "dev": "cd dev && vite dev",
+    "dev:generate-importmap": "cd dev && cross-env PAYLOAD_CONFIG_PATH=./src/payload.config.ts payload generate:importmap",
+    "dev:generate-types": "cd dev && cross-env PAYLOAD_CONFIG_PATH=./src/payload.config.ts payload generate:types",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "generate:importmap": "pnpm dev:generate-importmap",
+    "generate:types": "pnpm dev:generate-types",
+    "lint": "biome lint .",
+    "lint:dead-code": "knip",
+    "lint:fix": "biome lint --write .",
+    "lint:package": "publint",
+    "lint:types": "rimraf .attw && pnpm pack --pack-destination .attw >/dev/null && attw .attw/*.tgz --profile esm-only --exclude-entrypoints ./client.css && rimraf .attw",
+    "prepublishOnly": "pnpm build && pnpm lint:package && pnpm lint:types",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ipaddr.js": "^2.5.0",
+    "jose": "^6.2.12"
+  },
+  "peerDependencies": {
+    "@payloadcms/ui": ">=4.0.0-beta.8 <5",
+    "payload": ">=4.0.0-beta.8 <5",
+    "react": ">=19.0.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@biomejs/biome": "^2.6.7",
+    "@payloadcms/db-sqlite": "4.0.0-beta.8",
+    "@payloadcms/richtext-lexical": "4.0.0-beta.8",
+    "@payloadcms/tanstack-start": "4.0.0-beta.8",
+    "@payloadcms/ui": "4.0.0-beta.8",
+    "@swc/cli": "0.6.0",
+    "@tanstack/react-router": "^1.170.44",
+    "@tanstack/react-start": "^1.169.1",
+    "@types/node": "24.12.3",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.0.3",
+    "@vitejs/plugin-rsc": "^0.5.38",
+    "@vitest/coverage-v8": "^5.1.0",
+    "cross-env": "10.1.0",
+    "knip": "^6.45.1",
+    "payload": "4.0.0-beta.8",
+    "publint": "^0.3.25",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "rimraf": "6.0.1",
+    "typescript": "6.0.3",
+    "vite": "8.3.6",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=24.22.1"
+  },
+  "packageManager": "pnpm@12.18.0",
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js",
+        "default": "./dist/index.js"
+      },
+      "./client": {
+        "types": "./dist/exports/client.d.ts",
+        "import": "./dist/exports/client.js",
+        "default": "./dist/exports/client.js"
+      },
+      "./client.css": {
+        "import": "./dist/client/GitHubLoginButton.css",
+        "default": "./dist/client/GitHubLoginButton.css"
+      }
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  }
+}

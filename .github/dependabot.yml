@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      payload:
+        patterns:
+          - payload
+          - "@payloadcms/*"
+      biome:
+        patterns:
+          - "@biomejs/*"
+      test:
+        patterns:
+          - vitest
+          - "@vitest/*"
+          - "@arethetypeswrong/*"
+          - publint
+          - knip

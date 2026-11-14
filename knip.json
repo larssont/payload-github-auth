@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignore": ["dev/**"],
+  "ignoreDependencies": [
+    "@payloadcms/ui",
+    "@payloadcms/richtext-lexical",
+    "@payloadcms/tanstack-start",
+    "@tanstack/react-router",
+    "@tanstack/react-start",
+    "@vitejs/plugin-react",
+    "@vitejs/plugin-rsc"
+  ]
+}
