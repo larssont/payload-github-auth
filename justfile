@@ -92,7 +92,12 @@ ci: check test-coverage test-integration package
 [doc("Publish to npm, tag the release, and push the tag.")]
 [group("Release")]
 publish: release-check check test test-integration package
-    pnpm publish --access public
+    @tmp=$(mktemp -d); \
+      pnpm pack --pack-destination "$tmp" >/dev/null; \
+      npm publish "$tmp"/*.tgz --access public --auth-type=web; \
+      status=$?; \
+      rm -rf "$tmp"; \
+      exit $status
     @version=$(node -p "require('./package.json').version"); \
       git tag -a "v$version" -m "v$version"; \
       git push origin "v$version"
