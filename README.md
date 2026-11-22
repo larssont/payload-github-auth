@@ -2,7 +2,7 @@
 
 GitHub App login for the Payload CMS admin. The plugin adds a “Sign in with GitHub” button to the login page, verifies the user’s GitHub email, creates or links the Payload user, and mints a normal Payload session. It runs GitHub-only by default; set `allowPasswordLogin: true` to keep the local email/password strategy.
 
-> Status: `0.1.0`, Payload 4 beta. ESM-only, Node `>=24.22.1`.
+> Status: `0.1.0`, Payload 4 beta. ESM-only, Node `>=26.13.1`.
 
 ## What it does
 
@@ -20,7 +20,7 @@ GitHub App login for the Payload CMS admin. The plugin adds a “Sign in with Gi
 ## Requirements
 
 - Payload 4 beta and React 19.
-- Node `>=24.22.1`.
+- Node `>=26.13.1`.
 - An auth-enabled users collection with a singular `role` select field.
 - A GitHub App.
 

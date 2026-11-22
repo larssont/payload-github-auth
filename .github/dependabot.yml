@@ -5,18 +5,26 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    cooldown:
+      default-days: 3
+      semver-major-days: 14
+      semver-minor-days: 7
+      semver-patch-days: 3
     groups:
       payload:
         patterns:
           - payload
           - "@payloadcms/*"
-      biome:
-        patterns:
-          - "@biomejs/*"
-      test:
-        patterns:
-          - vitest
-          - "@vitest/*"
-          - "@arethetypeswrong/*"
-          - publint
-          - knip
+      development:
+        dependency-type: development
+        exclude-patterns:
+          - payload
+          - "@payloadcms/*"
+        update-types:
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
+    ignore:
+      - dependency-name: "payload"
+        versions: [">=4.0.0-canary.0 <4.0.0"]
+      - dependency-name: "@payloadcms/*"
+        versions: [">=4.0.0-canary.0 <4.0.0"]
