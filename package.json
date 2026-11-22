@@ -83,7 +83,7 @@
     "@payloadcms/richtext-lexical": "4.0.0-beta.11",
     "@payloadcms/tanstack-start": "4.0.0-beta.11",
     "@payloadcms/ui": "4.0.0-beta.11",
-    "@swc/cli": "0.6.0",
+    "@swc/cli": "0.8.2",
     "@tanstack/react-router": "^1.170.44",
     "@tanstack/react-start": "^1.169.1",
     "@types/node": "26.6.6",
@@ -100,7 +100,7 @@
     "react-dom": "19.3.1",
     "rimraf": "6.1.4",
     "typescript": "7.0.2",
-    "vite": "8.3.6",
+    "vite": "8.3.8",
     "vitest": "^5.1.0"
   },
   "engines": {
